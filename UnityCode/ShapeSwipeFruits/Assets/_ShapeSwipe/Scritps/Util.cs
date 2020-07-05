@@ -1,14 +1,4 @@
 ﻿
-/***********************************************************************************************************
- * Produced by App Advisory	- http://app-advisory.com													   *
- * Facebook: https://facebook.com/appadvisory															   *
- * Contact us: https://appadvisory.zendesk.com/hc/en-us/requests/new									   *
- * App Advisory Unity Asset Store catalog: http://u3d.as/9cs											   *
- * Developed by Gilbert Anthony Barouch - https://www.linkedin.com/in/ganbarouch                           *
- ***********************************************************************************************************/
-
-
-
 using UnityEngine;
 using UnityEngine.UI;
 using System;
@@ -21,12 +11,9 @@ using DG.Tweening;
 
 #endif
 
-#if UNITY_5_3_OR_NEWER
 using UnityEngine.SceneManagement;
-#endif
 
-namespace AppAdvisory.ShapeSwipe
-{
+
 	/// <summary>
 	/// Utility class.
 	/// </summary>
@@ -161,5 +148,5 @@ namespace AppAdvisory.ShapeSwipe
 			return 2f * cam.orthographicSize;
 		}
 	}
-}
+
 

@@ -49,6 +49,7 @@ using AppAdvisory.social;
 		public AudioClip FX_Reward;
 		public AudioClip FX_NewCharacter;
 		public AudioSource audioSource;
+	public UIController uiController;
 		public void PlaySoundFX_Start()
 		{
 			audioSource.PlayOneShot(FX_Start);
@@ -80,7 +81,7 @@ using AppAdvisory.social;
 			set
 			{
 				if(textPoint == null)
-					textPoint = FindObjectOfType<UIController>().scoreIngame;
+					textPoint = uiController.scoreIngame;
 				
 				m_point = value;
 
@@ -141,8 +142,8 @@ using AppAdvisory.social;
 
 			audioSource = GetComponent<AudioSource>();
 
-			FindObjectOfType<UIController>().SetBestText(Util.GetBestScore());
-			FindObjectOfType<UIController>().SetLastText(Util.GetLastScore());
+		    uiController.SetBestText(Util.GetBestScore());
+		    uiController.SetLastText(Util.GetLastScore());
 		}
 
 		void Start()
@@ -154,8 +155,8 @@ using AppAdvisory.social;
 		{
 			Util.SetLastScore(point);
 
-			FindObjectOfType<UIController>().SetBestText(Util.GetBestScore());
-			FindObjectOfType<UIController>().SetLastText(Util.GetLastScore());
+		    uiController.SetBestText(Util.GetBestScore());
+		    uiController.SetLastText(Util.GetLastScore());
 
 			ShowAds();
 

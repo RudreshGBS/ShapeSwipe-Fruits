@@ -574,6 +574,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a808e5daed72e4e6c9bc1e167bdfc7d6, type: 3}
+--- !u!114 &1465901074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 11495300, guid: cd1a337e34b2544878cef8e546eeb4f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 564257167}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f49d25309ff044f6b8738ad14859f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1603800869 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11482740, guid: 42af69f8614784a8096392ddb097825d,
@@ -729,5 +741,9 @@ PrefabInstance:
       propertyPath: textPoint
       value: 
       objectReference: {fileID: 570250021}
+    - target: {fileID: 11482740, guid: 42af69f8614784a8096392ddb097825d, type: 3}
+      propertyPath: uiController
+      value: 
+      objectReference: {fileID: 1465901074}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42af69f8614784a8096392ddb097825d, type: 3}

@@ -49,7 +49,7 @@ using AppAdvisory.social;
 		public AudioClip FX_Reward;
 		public AudioClip FX_NewCharacter;
 		public AudioSource audioSource;
-	public UIController uiController;
+	//public UIController uiController;
 		public void PlaySoundFX_Start()
 		{
 			audioSource.PlayOneShot(FX_Start);
@@ -80,8 +80,8 @@ using AppAdvisory.social;
 			}
 			set
 			{
-				if(textPoint == null)
-					textPoint = uiController.scoreIngame;
+				//if(textPoint == null)
+				//	textPoint = uiController.scoreIngame;
 				
 				m_point = value;
 
@@ -141,9 +141,9 @@ using AppAdvisory.social;
 			point = 0;
 
 			audioSource = GetComponent<AudioSource>();
-
-		    uiController.SetBestText(Util.GetBestScore());
-		    uiController.SetLastText(Util.GetLastScore());
+		//TODO Add best score and Last score
+		    //uiController.SetBestText(Util.GetBestScore());
+		    //uiController.SetLastText(Util.GetLastScore());
 		}
 
 		void Start()
@@ -154,11 +154,12 @@ using AppAdvisory.social;
 		public void DOGameOver()
 		{
 			Util.SetLastScore(point);
+		//TODO Add best score and Last score
 
-		    uiController.SetBestText(Util.GetBestScore());
-		    uiController.SetLastText(Util.GetLastScore());
+		//uiController.SetBestText(Util.GetBestScore());
+		//uiController.SetLastText(Util.GetLastScore());
 
-			ShowAds();
+		ShowAds();
 
 			#if VS_SHARE
 			VSSHARE.DOTakeScreenShot();
@@ -179,15 +180,17 @@ using AppAdvisory.social;
 			PlaySoundFX_DoorMiss();
 
 			#if AADOTWEEN
-
-			Camera.main.DOOrthoSize(Camera.main.orthographicSize * 0.9f, 0.1f)
+			player.DestroyPlayer();
+			Camera.main.DOOrthoSize(Camera.main.orthographicSize * 0.9f, 0.5f)
 				.SetLoops(5, LoopType.Yoyo)
 				.OnComplete(() => {
-					Camera.main.DOOrthoSize(Camera.main.orthographicSize * 0.01f, 1f)
-						.OnComplete(() => {
-							Util.ReloadLevel();
-						});
-			});
+					Util.ReloadLevel();
+                    //Camera.main.DOOrthoSize(Camera.main.orthographicSize * 0.01f, 1f)
+                    //    .OnComplete(() =>
+                    //    {
+                    //        Util.ReloadLevel();
+                    //    });
+                });
 
 			#endif
 
@@ -394,8 +397,14 @@ using AppAdvisory.social;
 			PlayerPrefs.Save();
 			#endif
 		}
+    private void Update()
+    {
+		if (Input.GetKeyDown(KeyCode.Space)){
+			OnClickedStart();
+		}
+    }
 
-	}
+}
 
 
 

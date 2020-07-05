@@ -15,6 +15,9 @@ using System.Collections.Generic;
 		int count = 0;
 
 		public GameObject[] shadows;
+
+	public ParticleSystem killParticle;
+
 		public void EnableShadows(bool _enable)
 		{
 			foreach(var go in shadows)
@@ -22,6 +25,7 @@ using System.Collections.Generic;
 				go.SetActive(_enable);
 			}
 		}
+
 
 		GameManager gameManager;
 
@@ -86,6 +90,18 @@ using System.Collections.Generic;
 				gameManager.DOGameOver();
 			}
 		}
+
+	public void DestroyPlayer() {
+		StartCoroutine("KillPlayer");
+
 	}
+	IEnumerator KillPlayer() {
+		killParticle.Play(true);
+		yield return new WaitForSeconds(2);
+		DisableAll();
+		killParticle.Stop(true);
+
+	}
+}
 
 

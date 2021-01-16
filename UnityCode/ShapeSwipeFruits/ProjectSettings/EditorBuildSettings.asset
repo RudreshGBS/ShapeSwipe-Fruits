@@ -4,4 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_ShapeSwipe/Scenes/TrioScene.unity
+    guid: ea5e6856d48ae402f852e322ad5d37ad
+  m_configObjects: {}

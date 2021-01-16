@@ -49,6 +49,9 @@ using AppAdvisory.social;
 		public AudioClip FX_Reward;
 		public AudioClip FX_NewCharacter;
 		public AudioSource audioSource;
+		public bool switchRotation;
+		public float camDistance;
+	
 	//public UIController uiController;
 		public void PlaySoundFX_Start()
 		{
@@ -91,7 +94,8 @@ using AppAdvisory.social;
 					PlaySoundFX_DoorOK();
 			}
 		}
-
+	private int updateGameplayScore=5
+		;
 	
 		public Color GetRandomShapeColor()
 		{
@@ -253,11 +257,39 @@ using AppAdvisory.social;
 
 			DOTween.Kill(player.transform);
 
-
-
 			var target = new Vector3(nextTargets[0].transform.position.x, 0, nextTargets[0].transform.position.z);
 
-			player.transform.DOMove(target, timeToMoveOnOneBlock)
+		if (point - updateGameplayScore ==0) {
+			updateGameplayScore = point;
+			Debug.LogError("Game play updated");
+		}
+		 if (player.transform.position.x != target.x && !switchRotation)
+		 {
+			var pos = Camera.main.transform.position;
+			pos.z = 0;
+			pos.x = camDistance;
+			
+			Camera.main.transform.DOLocalMove(pos, timeToMoveOnOneBlock/2).SetEase(Ease.Linear);
+			//Camera.main.transform.localPosition = pos;
+			var angle = Camera.main.transform.eulerAngles;
+			var rotate = new Vector3(angle.x, 270f, angle.z);
+			Camera.main.transform.DORotate(rotate, timeToMoveOnOneBlock / 2).SetEase(Ease.Linear);
+
+			switchRotation = true;
+		 }
+		 else if (player.transform.position.z != target.z && switchRotation)
+		 {
+			var pos = Camera.main.transform.position;
+			pos.z = camDistance;
+			pos.x = 0;
+			Camera.main.transform.DOLocalMove(pos,timeToMoveOnOneBlock/2).SetEase(Ease.Linear);
+			//Camera.main.transform.localPosition = pos;
+			var angle = Camera.main.transform.eulerAngles;
+			var rotate = new Vector3(angle.x, 180f, angle.z);
+			Camera.main.transform.DORotate(rotate, timeToMoveOnOneBlock / 2).SetEase(Ease.Linear);
+			switchRotation = false;
+		 }
+		player.transform.DOMove(target, timeToMoveOnOneBlock)
 				.SetEase(Ease.Linear)
 
 				.OnComplete(() => {

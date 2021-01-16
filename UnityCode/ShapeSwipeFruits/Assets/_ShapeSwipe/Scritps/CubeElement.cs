@@ -123,19 +123,15 @@ using DG.Tweening;
 
 		public void DORotateElement()
 		{
-			var e = SPHERE.transform.eulerAngles;
-			e.y = 90;
-			SPHERE.transform.eulerAngles = e;
-
-			e = RECTANGLE.transform.eulerAngles;
-			e.y = 90;
-			RECTANGLE.transform.eulerAngles = e;
-
-			e = TRIANGLE.transform.eulerAngles;
-			e.y = 90;
-			TRIANGLE.transform.eulerAngles = e;
+		   RotateElement(SPHERE.transform);
+		   RotateElement(RECTANGLE.transform);
+		   RotateElement(TRIANGLE.transform);
 		}
-
+		private void RotateElement(Transform shape) {
+			var e = shape.eulerAngles;
+			e.y = 90;
+			shape.eulerAngles = e;
+		}
 
 		void DOAnimIn(Action isCompleted)
 		{
